@@ -283,7 +283,7 @@ namespace QA_Test_Reports
             {
                 tableContent +=
                     "<tr>" +
-                        "<td align=\"left\" colspan=\"2\">" + testGroupExecutionList[x].grpName + "</td>" +
+                        "<td colspan=\"2\"><button type=\"button\">" + testGroupExecutionList[x].grpName + "</button></td>" +
                     "</tr>" +
                     "<tr>" +
                         "<td>Total</td>" + "<td>" + testGroupExecutionList[x].grpTestCases.Count.ToString() + "</td>" +
