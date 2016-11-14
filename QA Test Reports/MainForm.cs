@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
-//using Outlook = Microsoft.Office.Interop.Outlook;
+using Outlook = Microsoft.Office.Interop.Outlook;
 
 namespace QA_Test_Reports
 {
@@ -219,15 +219,6 @@ namespace QA_Test_Reports
 
         public void populateMainDashBoard()
         {
-            //Debugging
-            string display = "";
-            for(int x = 0; x < testGroupExecutionList.Count; x++)
-            {
-                display = display + testGroupExecutionList[x].grpName.ToString() + "-" +
-                    testGroupExecutionList[x].grpStatus.ToString() + "\n";
-            }
-            MessageBox.Show(display);
-
             int testCaseCount = 0;
             double progressCount = 0;
             double TOTALfailRate = 0;
@@ -257,6 +248,8 @@ namespace QA_Test_Reports
             failRateNumLbl.Text = TOTALfailRatePercentage.ToString();
             //failRateNumLbl.Text = TOTALfailRate.ToString();
 
+            //Make Email button visible
+            emailBtn.Visible = true;
         }
 
         public void loadMainPieChart()
@@ -281,6 +274,57 @@ namespace QA_Test_Reports
         private void resetBtn_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void emailBtn_Click(object sender, EventArgs e)
+        {
+            string tableContent = "";
+            for(int x = 0; x < testGroupExecutionList.Count; x++)
+            {
+                tableContent +=
+                    "<tr>" +
+                        "<td align=\"left\" colspan=\"2\">" + testGroupExecutionList[x].grpName + "</td>" +
+                    "</tr>" +
+                    "<tr>" +
+                        "<td>Total</td>" + "<td>" + testGroupExecutionList[x].grpTestCases.Count.ToString() + "</td>" +
+                    "</tr>" +
+                    "<tr>" +
+                        "<td>Status</td>" + "<td>" + testGroupExecutionList[x].grpStatus + "</td>" +
+                    "</tr>" +
+                    "<tr>" +
+                        "<td>Passed</td>" + "<td>" + testGroupExecutionList[x].grpPassPercent + "</td>" +
+                    "</tr>" +
+                    "<tr>" +
+                        "<td>Failed</td>" + "<td>" + testGroupExecutionList[x].grpFailPercent + "</td>" +
+                    "</tr>" +
+                    "<tr>" +
+                        "<td>In Progress</td>" + "<td>" + testGroupExecutionList[x].grpOtherPercent + "</td>" +
+                    "</tr>";
+            }
+            Outlook.Application outlookApp = new Outlook.Application();
+            Outlook.MailItem mail = (Outlook.MailItem)outlookApp.CreateItem(Outlook.OlItemType.olMailItem);
+            DateTime today = DateTime.Now;
+            mail.Subject = today.ToLongDateString() + " - Testing Report";
+
+            mail.HTMLBody =
+                "<html>" +
+                    "<head>" +
+                        "<style>" +
+                            "body color: navy;" +
+                        "</style>" +
+                    "</head>" +
+                    "<body>" +
+                        "<h3>Total # of Test Cases Planned: " + totalNumLbl.Text.ToString() + "</h3>" +
+                        "Test Execution Progress: " + progressNumLbl.Text.ToString() +
+                        "<br>" +
+                        "<br>" +
+                        "<table border=\"1\">" +
+                            tableContent +
+                        "</table>" +
+                    "</body>" +
+                "</html>";
+
+            mail.Display(true);
         }
     }
 }

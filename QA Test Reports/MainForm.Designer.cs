@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.addTestGroupBtn = new System.Windows.Forms.Button();
             this.totalLbl = new System.Windows.Forms.Label();
             this.totalNumLbl = new System.Windows.Forms.Label();
@@ -42,6 +42,7 @@
             this.failRateNumLbl = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.testGroupTab = new System.Windows.Forms.TabPage();
+            this.testGroupList = new System.Windows.Forms.ListBox();
             this.testCaseTab = new System.Windows.Forms.TabPage();
             this.testCaseList = new System.Windows.Forms.ListBox();
             this.executionTab = new System.Windows.Forms.TabPage();
@@ -55,8 +56,8 @@
             this.tCSteps = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.adminTab = new System.Windows.Forms.TabPage();
             this.resetBtn = new System.Windows.Forms.Button();
-            this.testGroupList = new System.Windows.Forms.ListBox();
             this.mainPieChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.emailBtn = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.testGroupTab.SuspendLayout();
             this.testCaseTab.SuspendLayout();
@@ -171,6 +172,15 @@
             this.testGroupTab.Text = "Test Groups";
             this.testGroupTab.UseVisualStyleBackColor = true;
             // 
+            // testGroupList
+            // 
+            this.testGroupList.FormattingEnabled = true;
+            this.testGroupList.ItemHeight = 16;
+            this.testGroupList.Location = new System.Drawing.Point(6, 6);
+            this.testGroupList.Name = "testGroupList";
+            this.testGroupList.Size = new System.Drawing.Size(361, 356);
+            this.testGroupList.TabIndex = 0;
+            // 
             // testCaseTab
             // 
             this.testCaseTab.Controls.Add(this.testCaseList);
@@ -282,33 +292,35 @@
             this.resetBtn.UseVisualStyleBackColor = true;
             this.resetBtn.Click += new System.EventHandler(this.resetBtn_Click);
             // 
-            // testGroupList
-            // 
-            this.testGroupList.FormattingEnabled = true;
-            this.testGroupList.ItemHeight = 16;
-            this.testGroupList.Location = new System.Drawing.Point(6, 6);
-            this.testGroupList.Name = "testGroupList";
-            this.testGroupList.Size = new System.Drawing.Size(361, 356);
-            this.testGroupList.TabIndex = 0;
-            // 
             // mainPieChart
             // 
-            chartArea1.Name = "ChartArea1";
-            this.mainPieChart.ChartAreas.Add(chartArea1);
-            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend1.Name = "Legend1";
-            this.mainPieChart.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.mainPieChart.ChartAreas.Add(chartArea2);
+            legend2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend2.Name = "Legend1";
+            this.mainPieChart.Legends.Add(legend2);
             this.mainPieChart.Location = new System.Drawing.Point(3, 175);
             this.mainPieChart.Name = "mainPieChart";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series1.Label = "#VAL{N}";
-            series1.Legend = "Legend1";
-            series1.Name = "Status";
-            this.mainPieChart.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series2.Label = "#VAL{N}";
+            series2.Legend = "Legend1";
+            series2.Name = "Status";
+            this.mainPieChart.Series.Add(series2);
             this.mainPieChart.Size = new System.Drawing.Size(239, 238);
             this.mainPieChart.TabIndex = 10;
             this.mainPieChart.Text = "chart1";
+            // 
+            // emailBtn
+            // 
+            this.emailBtn.Location = new System.Drawing.Point(159, 13);
+            this.emailBtn.Name = "emailBtn";
+            this.emailBtn.Size = new System.Drawing.Size(75, 28);
+            this.emailBtn.TabIndex = 11;
+            this.emailBtn.Text = "Email";
+            this.emailBtn.UseVisualStyleBackColor = true;
+            this.emailBtn.Visible = false;
+            this.emailBtn.Click += new System.EventHandler(this.emailBtn_Click);
             // 
             // MainForm
             // 
@@ -316,6 +328,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1162, 425);
+            this.Controls.Add(this.emailBtn);
             this.Controls.Add(this.mainPieChart);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.failRateNumLbl);
@@ -369,6 +382,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tCSteps;
         private System.Windows.Forms.ListBox testGroupList;
         private System.Windows.Forms.DataVisualization.Charting.Chart mainPieChart;
+        private System.Windows.Forms.Button emailBtn;
     }
 }
 
