@@ -46,6 +46,9 @@ namespace QA_Test_Reports
 
         //Admin Tab Attributes
 
+        //Email Attributes
+        string MainPieImagesDirectory = "";
+
         public MainForm()
         {
             InitializeComponent();
@@ -263,7 +266,8 @@ namespace QA_Test_Reports
             this.mainPieChart.Series["Status"].Points.AddXY("Fail", TOTALfailRatePercentage);
             this.mainPieChart.Series["Status"].Points.AddXY("Other", 100 - TOTALpassRatePercentage -
                 TOTALfailRatePercentage);
-            this.mainPieChart.SaveImage("C:\\Users\\ryang\\Desktop\\MainPieChart.png", System.Windows.Forms.DataVisualization.Charting.ChartImageFormat.Png);
+            MainPieImagesDirectory = AppDomain.CurrentDomain.BaseDirectory + "MainPieChart.png";
+            this.mainPieChart.SaveImage(MainPieImagesDirectory, System.Windows.Forms.DataVisualization.Charting.ChartImageFormat.Png);
         }
 
         public static string grpProject { get; internal set; }
@@ -318,7 +322,7 @@ namespace QA_Test_Reports
                         "<h3>Total # of Test Cases Planned: " + totalNumLbl.Text.ToString() + "</h3>" +
                         "Test Execution Progress: " + progressNumLbl.Text.ToString() +
                         "<br>" +
-                        "<img src=\"C:\\Users\\ryang\\Desktop\\MainPieChart.png\">" +
+                        "<img src=\""+ MainPieImagesDirectory + "\">" +
                         "<br>" +
                         "<table border=\"1\">" +
                             tableContent +
@@ -327,6 +331,12 @@ namespace QA_Test_Reports
                 "</html>";
 
             mail.Display(true);
+
+            //Delete Pie Charts
+            if (File.Exists(MainPieImagesDirectory))
+            {
+                File.Delete(MainPieImagesDirectory);
+            }
         }
     }
 }
