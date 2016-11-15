@@ -263,6 +263,7 @@ namespace QA_Test_Reports
             this.mainPieChart.Series["Status"].Points.AddXY("Fail", TOTALfailRatePercentage);
             this.mainPieChart.Series["Status"].Points.AddXY("Other", 100 - TOTALpassRatePercentage -
                 TOTALfailRatePercentage);
+            this.mainPieChart.SaveImage("C:\\Users\\ryang\\Desktop\\MainPieChart.png", System.Windows.Forms.DataVisualization.Charting.ChartImageFormat.Png);
         }
 
         public static string grpProject { get; internal set; }
@@ -317,6 +318,7 @@ namespace QA_Test_Reports
                         "<h3>Total # of Test Cases Planned: " + totalNumLbl.Text.ToString() + "</h3>" +
                         "Test Execution Progress: " + progressNumLbl.Text.ToString() +
                         "<br>" +
+                        "<img src=\"C:\\Users\\ryang\\Desktop\\MainPieChart.png\">" +
                         "<br>" +
                         "<table border=\"1\">" +
                             tableContent +
