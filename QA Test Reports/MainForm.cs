@@ -290,7 +290,7 @@ namespace QA_Test_Reports
             {
                 tableContent +=
                     "<tr>" +
-                        "<td colspan=\"2\"><button type=\"button\">" + testGroupExecutionList[x].grpName + "</button></td>" +
+                        "<td colspan=\"2\">" + testGroupExecutionList[x].grpName + "</td>" +
                     "</tr>" +
                     "<tr>" +
                         "<td>Total</td>" + "<td>" + testGroupExecutionList[x].grpTestCases.Count.ToString() + "</td>" +
@@ -299,13 +299,13 @@ namespace QA_Test_Reports
                         "<td>Status</td>" + "<td>" + testGroupExecutionList[x].grpStatus + "</td>" +
                     "</tr>" +
                     "<tr>" +
-                        "<td>Passed</td>" + "<td>" + testGroupExecutionList[x].grpPassPercent + "</td>" +
+                        "<td>Passed</td>" + "<td>" + testGroupExecutionList[x].grpPassPercent.ToString("0") + "%</td>" +
                     "</tr>" +
                     "<tr>" +
-                        "<td>Failed</td>" + "<td>" + testGroupExecutionList[x].grpFailPercent + "</td>" +
+                        "<td>Failed</td>" + "<td>" + testGroupExecutionList[x].grpFailPercent.ToString("0") + "%</td>" +
                     "</tr>" +
                     "<tr>" +
-                        "<td>In Progress</td>" + "<td>" + testGroupExecutionList[x].grpOtherPercent + "</td>" +
+                        "<td>In Progress</td>" + "<td>" + testGroupExecutionList[x].grpOtherPercent.ToString("0") + "%</td>" +
                     "</tr>";
             }
             Outlook.Application outlookApp = new Outlook.Application();
@@ -321,13 +321,21 @@ namespace QA_Test_Reports
                         "</style>" +
                     "</head>" +
                     "<body>" +
-                        "<h3>Total # of Test Cases Planned: " + totalNumLbl.Text.ToString() + "</h3>" +
-                        "Test Execution Progress: " + progressNumLbl.Text.ToString() +
-                        "<br>" +
-                        "<img src=\""+ MainPieImagesDirectory + "\">" +
-                        "<br>" +
-                        "<table border=\"1\">" +
-                            tableContent +
+                        "<table width=\"100%\">" +
+                            "<tr>" +
+                                "<table border=\"1\" align=\"center\">" +
+                                    "<tr>" +
+                                        "<td colspan=\"2\">Total # of Test Cases Planned: " + totalNumLbl.Text.ToString() + "</ td>" +
+                                    "</tr>" +
+                                    "<tr>" +
+                                        "<td colspan=\"2\">Test Execution Progress: " + progressNumLbl.Text.ToString() + "</ td>" +
+                                    "</tr>" +
+                                    "<tr>" +
+                                        "<td colspan=\"2\"><img src=\"" + MainPieImagesDirectory + "\"></td>" +
+                                    "</tr>" +
+                                        tableContent +
+                                "</table>" +
+                            "</tr>" +
                         "</table>" +
                     "</body>" +
                 "</html>";
@@ -335,10 +343,10 @@ namespace QA_Test_Reports
             mail.Display(true);
 
             //Delete Pie Charts
-            if (File.Exists(MainPieImagesDirectory))
-            {
-                File.Delete(MainPieImagesDirectory);
-            }
+            //if (File.Exists(MainPieImagesDirectory))
+            //{
+            //    File.Delete(MainPieImagesDirectory);
+            //}
         }
     }
 }
