@@ -246,9 +246,8 @@ namespace QA_Test_Reports
 
             totalNumLbl.Text = TOTALtestCaseCount.ToString("0");
             progressNumLbl.Text = TOTALprogressCount.ToString("0");
-            passRateNumLbl.Text = TOTALpassRatePercentage.ToString();
-            //passRateNumLbl.Text = TOTALpassRate.ToString();
-            failRateNumLbl.Text = TOTALfailRatePercentage.ToString();
+            passRateNumLbl.Text = TOTALpassRatePercentage.ToString("0") + "%";
+            failRateNumLbl.Text = TOTALfailRatePercentage.ToString("0") + "%";
             //failRateNumLbl.Text = TOTALfailRate.ToString();
 
             //Make Email button visible
@@ -266,6 +265,9 @@ namespace QA_Test_Reports
             this.mainPieChart.Series["Status"].Points.AddXY("Fail", TOTALfailRatePercentage);
             this.mainPieChart.Series["Status"].Points.AddXY("Other", 100 - TOTALpassRatePercentage -
                 TOTALfailRatePercentage);
+            this.mainPieChart.Series["Status"].Points[0].LegendText = "Pass";
+            this.mainPieChart.Series["Status"].Points[1].LegendText = "Fail";
+            this.mainPieChart.Series["Status"].Points[2].LegendText = "Other";
             MainPieImagesDirectory = AppDomain.CurrentDomain.BaseDirectory + "MainPieChart.png";
             this.mainPieChart.SaveImage(MainPieImagesDirectory, System.Windows.Forms.DataVisualization.Charting.ChartImageFormat.Png);
         }

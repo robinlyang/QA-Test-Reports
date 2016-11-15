@@ -301,11 +301,21 @@
             this.mainPieChart.Legends.Add(legend2);
             this.mainPieChart.Location = new System.Drawing.Point(3, 175);
             this.mainPieChart.Name = "mainPieChart";
+            this.mainPieChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
+            this.mainPieChart.PaletteCustomColors = new System.Drawing.Color[] {
+        System.Drawing.Color.Red,
+        System.Drawing.Color.Blue,
+        System.Drawing.Color.Purple};
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series2.Label = "#VAL{N}";
+            series2.EmptyPointStyle.IsValueShownAsLabel = true;
+            series2.IsValueShownAsLabel = true;
+            series2.Label = "#VAL{N0}%";
+            series2.LabelForeColor = System.Drawing.Color.White;
             series2.Legend = "Legend1";
             series2.Name = "Status";
+            series2.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.String;
+            series2.YAxisType = System.Windows.Forms.DataVisualization.Charting.AxisType.Secondary;
             this.mainPieChart.Series.Add(series2);
             this.mainPieChart.Size = new System.Drawing.Size(239, 238);
             this.mainPieChart.TabIndex = 10;
