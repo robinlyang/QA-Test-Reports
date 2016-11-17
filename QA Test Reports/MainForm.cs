@@ -258,8 +258,10 @@ namespace QA_Test_Reports
 
             totalNumLbl.Text = TOTALtestCaseCount.ToString("0");
             progressNumLbl.Text = TOTALprogressCount.ToString("0");
-            passRateNumLbl.Text = TOTALpassRatePercentage.ToString("0") + "%";
-            failRateNumLbl.Text = TOTALfailRatePercentage.ToString("0") + "%";
+            passRateNumLbl.Text = (TOTALprogressCount * (TOTALpassRatePercentage/100)).ToString("0") +
+                " (" + TOTALpassRatePercentage.ToString("0") + "%)";
+            failRateNumLbl.Text = (TOTALprogressCount * (TOTALfailRatePercentage/100)).ToString("0") +
+                " (" + TOTALfailRatePercentage.ToString("0") + "%)";
             //failRateNumLbl.Text = TOTALfailRate.ToString();
 
             //Make Email button visible
