@@ -28,9 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.addTestGroupBtn = new System.Windows.Forms.Button();
             this.totalLbl = new System.Windows.Forms.Label();
             this.totalNumLbl = new System.Windows.Forms.Label();
@@ -58,6 +61,29 @@
             this.resetBtn = new System.Windows.Forms.Button();
             this.mainPieChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.emailBtn = new System.Windows.Forms.Button();
+            this.totalTCsGroupLbl = new System.Windows.Forms.Label();
+            this.totalTCsGroupNumLbl = new System.Windows.Forms.Label();
+            this.groupLbl = new System.Windows.Forms.Label();
+            this.groupTxtBox = new System.Windows.Forms.TextBox();
+            this.projectLbl = new System.Windows.Forms.Label();
+            this.projectTxtBox = new System.Windows.Forms.TextBox();
+            this.typeLbl = new System.Windows.Forms.Label();
+            this.typeTxtBox = new System.Windows.Forms.TextBox();
+            this.dateRangeLbl = new System.Windows.Forms.Label();
+            this.grpStartMnForm = new System.Windows.Forms.DateTimePicker();
+            this.toLbl = new System.Windows.Forms.Label();
+            this.grpEndMnForm = new System.Windows.Forms.DateTimePicker();
+            this.progressTCsGroupLbl = new System.Windows.Forms.Label();
+            this.progressTCsGroupNumLbl = new System.Windows.Forms.Label();
+            this.groupPassRateLbl = new System.Windows.Forms.Label();
+            this.groupPassRateNumLbl = new System.Windows.Forms.Label();
+            this.groupFailRateLbl = new System.Windows.Forms.Label();
+            this.groupFailRateNumLbl = new System.Windows.Forms.Label();
+            this.testGroupPanel = new System.Windows.Forms.Panel();
+            this.groupPieChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.mainProgressBar = new System.Windows.Forms.ProgressBar();
             this.tabControl1.SuspendLayout();
             this.testGroupTab.SuspendLayout();
             this.testCaseTab.SuspendLayout();
@@ -65,6 +91,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.testCaseGrid)).BeginInit();
             this.adminTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainPieChart)).BeginInit();
+            this.testGroupPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupPieChart)).BeginInit();
             this.SuspendLayout();
             // 
             // addTestGroupBtn
@@ -82,14 +110,14 @@
             this.totalLbl.AutoSize = true;
             this.totalLbl.Location = new System.Drawing.Point(12, 55);
             this.totalLbl.Name = "totalLbl";
-            this.totalLbl.Size = new System.Drawing.Size(44, 17);
+            this.totalLbl.Size = new System.Drawing.Size(149, 17);
             this.totalLbl.TabIndex = 1;
-            this.totalLbl.Text = "Total:";
+            this.totalLbl.Text = "Total TC\'s under Test:";
             // 
             // totalNumLbl
             // 
             this.totalNumLbl.AutoSize = true;
-            this.totalNumLbl.Location = new System.Drawing.Point(62, 55);
+            this.totalNumLbl.Location = new System.Drawing.Point(167, 55);
             this.totalNumLbl.Name = "totalNumLbl";
             this.totalNumLbl.Size = new System.Drawing.Size(16, 17);
             this.totalNumLbl.TabIndex = 2;
@@ -100,14 +128,14 @@
             this.progressLbl.AutoSize = true;
             this.progressLbl.Location = new System.Drawing.Point(12, 85);
             this.progressLbl.Name = "progressLbl";
-            this.progressLbl.Size = new System.Drawing.Size(69, 17);
+            this.progressLbl.Size = new System.Drawing.Size(102, 17);
             this.progressLbl.TabIndex = 3;
-            this.progressLbl.Text = "Progress:";
+            this.progressLbl.Text = "TC\'s Executed:";
             // 
             // progressNumLbl
             // 
             this.progressNumLbl.AutoSize = true;
-            this.progressNumLbl.Location = new System.Drawing.Point(87, 85);
+            this.progressNumLbl.Location = new System.Drawing.Point(114, 85);
             this.progressNumLbl.Name = "progressNumLbl";
             this.progressNumLbl.Size = new System.Drawing.Size(16, 17);
             this.progressNumLbl.TabIndex = 4;
@@ -116,7 +144,7 @@
             // passRateLbl
             // 
             this.passRateLbl.AutoSize = true;
-            this.passRateLbl.Location = new System.Drawing.Point(12, 115);
+            this.passRateLbl.Location = new System.Drawing.Point(37, 113);
             this.passRateLbl.Name = "passRateLbl";
             this.passRateLbl.Size = new System.Drawing.Size(77, 17);
             this.passRateLbl.TabIndex = 5;
@@ -125,7 +153,7 @@
             // passRateNumLbl
             // 
             this.passRateNumLbl.AutoSize = true;
-            this.passRateNumLbl.Location = new System.Drawing.Point(89, 115);
+            this.passRateNumLbl.Location = new System.Drawing.Point(114, 113);
             this.passRateNumLbl.Name = "passRateNumLbl";
             this.passRateNumLbl.Size = new System.Drawing.Size(16, 17);
             this.passRateNumLbl.TabIndex = 6;
@@ -134,7 +162,7 @@
             // failRateLbl
             // 
             this.failRateLbl.AutoSize = true;
-            this.failRateLbl.Location = new System.Drawing.Point(12, 144);
+            this.failRateLbl.Location = new System.Drawing.Point(46, 142);
             this.failRateLbl.Name = "failRateLbl";
             this.failRateLbl.Size = new System.Drawing.Size(68, 17);
             this.failRateLbl.TabIndex = 7;
@@ -143,7 +171,7 @@
             // failRateNumLbl
             // 
             this.failRateNumLbl.AutoSize = true;
-            this.failRateNumLbl.Location = new System.Drawing.Point(86, 144);
+            this.failRateNumLbl.Location = new System.Drawing.Point(114, 142);
             this.failRateNumLbl.Name = "failRateNumLbl";
             this.failRateNumLbl.Size = new System.Drawing.Size(16, 17);
             this.failRateNumLbl.TabIndex = 8;
@@ -155,7 +183,7 @@
             this.tabControl1.Controls.Add(this.testCaseTab);
             this.tabControl1.Controls.Add(this.executionTab);
             this.tabControl1.Controls.Add(this.adminTab);
-            this.tabControl1.Location = new System.Drawing.Point(244, 13);
+            this.tabControl1.Location = new System.Drawing.Point(268, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(906, 400);
@@ -163,6 +191,7 @@
             // 
             // testGroupTab
             // 
+            this.testGroupTab.Controls.Add(this.testGroupPanel);
             this.testGroupTab.Controls.Add(this.testGroupList);
             this.testGroupTab.Location = new System.Drawing.Point(4, 25);
             this.testGroupTab.Name = "testGroupTab";
@@ -178,8 +207,9 @@
             this.testGroupList.ItemHeight = 16;
             this.testGroupList.Location = new System.Drawing.Point(6, 6);
             this.testGroupList.Name = "testGroupList";
-            this.testGroupList.Size = new System.Drawing.Size(361, 356);
+            this.testGroupList.Size = new System.Drawing.Size(299, 356);
             this.testGroupList.TabIndex = 0;
+            this.testGroupList.SelectedIndexChanged += new System.EventHandler(this.testGroupList_SelectedIndexChanged);
             // 
             // testCaseTab
             // 
@@ -294,30 +324,30 @@
             // 
             // mainPieChart
             // 
-            chartArea2.Name = "ChartArea1";
-            this.mainPieChart.ChartAreas.Add(chartArea2);
-            legend2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend2.Name = "Legend1";
-            this.mainPieChart.Legends.Add(legend2);
+            chartArea6.Name = "ChartArea1";
+            this.mainPieChart.ChartAreas.Add(chartArea6);
+            legend6.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend6.Name = "Legend1";
+            this.mainPieChart.Legends.Add(legend6);
             this.mainPieChart.Location = new System.Drawing.Point(3, 175);
             this.mainPieChart.Name = "mainPieChart";
             this.mainPieChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
             this.mainPieChart.PaletteCustomColors = new System.Drawing.Color[] {
-        System.Drawing.Color.Red,
         System.Drawing.Color.Blue,
+        System.Drawing.Color.Red,
         System.Drawing.Color.Purple};
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series2.EmptyPointStyle.IsValueShownAsLabel = true;
-            series2.IsValueShownAsLabel = true;
-            series2.Label = "#VAL{N0}%";
-            series2.LabelForeColor = System.Drawing.Color.White;
-            series2.Legend = "Legend1";
-            series2.Name = "Status";
-            series2.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.String;
-            series2.YAxisType = System.Windows.Forms.DataVisualization.Charting.AxisType.Secondary;
-            this.mainPieChart.Series.Add(series2);
-            this.mainPieChart.Size = new System.Drawing.Size(239, 238);
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series6.EmptyPointStyle.IsValueShownAsLabel = true;
+            series6.IsValueShownAsLabel = true;
+            series6.Label = "#VAL{N0}%";
+            series6.LabelForeColor = System.Drawing.Color.White;
+            series6.Legend = "Legend1";
+            series6.Name = "Status";
+            series6.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.String;
+            series6.YAxisType = System.Windows.Forms.DataVisualization.Charting.AxisType.Secondary;
+            this.mainPieChart.Series.Add(series6);
+            this.mainPieChart.Size = new System.Drawing.Size(259, 238);
             this.mainPieChart.TabIndex = 10;
             this.mainPieChart.Text = "chart1";
             // 
@@ -332,12 +362,248 @@
             this.emailBtn.Visible = false;
             this.emailBtn.Click += new System.EventHandler(this.emailBtn_Click);
             // 
+            // totalTCsGroupLbl
+            // 
+            this.totalTCsGroupLbl.AutoSize = true;
+            this.totalTCsGroupLbl.Location = new System.Drawing.Point(388, 34);
+            this.totalTCsGroupLbl.Name = "totalTCsGroupLbl";
+            this.totalTCsGroupLbl.Size = new System.Drawing.Size(141, 17);
+            this.totalTCsGroupLbl.TabIndex = 1;
+            this.totalTCsGroupLbl.Text = "Total TC\'s for Group:";
+            // 
+            // totalTCsGroupNumLbl
+            // 
+            this.totalTCsGroupNumLbl.AutoSize = true;
+            this.totalTCsGroupNumLbl.Location = new System.Drawing.Point(535, 34);
+            this.totalTCsGroupNumLbl.Name = "totalTCsGroupNumLbl";
+            this.totalTCsGroupNumLbl.Size = new System.Drawing.Size(16, 17);
+            this.totalTCsGroupNumLbl.TabIndex = 2;
+            this.totalTCsGroupNumLbl.Text = "0";
+            // 
+            // groupLbl
+            // 
+            this.groupLbl.AutoSize = true;
+            this.groupLbl.Location = new System.Drawing.Point(43, 36);
+            this.groupLbl.Name = "groupLbl";
+            this.groupLbl.Size = new System.Drawing.Size(52, 17);
+            this.groupLbl.TabIndex = 3;
+            this.groupLbl.Text = "Group:";
+            // 
+            // groupTxtBox
+            // 
+            this.groupTxtBox.Location = new System.Drawing.Point(97, 31);
+            this.groupTxtBox.Name = "groupTxtBox";
+            this.groupTxtBox.Size = new System.Drawing.Size(246, 22);
+            this.groupTxtBox.TabIndex = 4;
+            // 
+            // projectLbl
+            // 
+            this.projectLbl.AutoSize = true;
+            this.projectLbl.Location = new System.Drawing.Point(39, 8);
+            this.projectLbl.Name = "projectLbl";
+            this.projectLbl.Size = new System.Drawing.Size(56, 17);
+            this.projectLbl.TabIndex = 5;
+            this.projectLbl.Text = "Project:";
+            // 
+            // projectTxtBox
+            // 
+            this.projectTxtBox.Location = new System.Drawing.Point(97, 3);
+            this.projectTxtBox.Name = "projectTxtBox";
+            this.projectTxtBox.Size = new System.Drawing.Size(246, 22);
+            this.projectTxtBox.TabIndex = 6;
+            // 
+            // typeLbl
+            // 
+            this.typeLbl.AutoSize = true;
+            this.typeLbl.Location = new System.Drawing.Point(51, 62);
+            this.typeLbl.Name = "typeLbl";
+            this.typeLbl.Size = new System.Drawing.Size(44, 17);
+            this.typeLbl.TabIndex = 7;
+            this.typeLbl.Text = "Type:";
+            // 
+            // typeTxtBox
+            // 
+            this.typeTxtBox.Location = new System.Drawing.Point(97, 59);
+            this.typeTxtBox.Name = "typeTxtBox";
+            this.typeTxtBox.Size = new System.Drawing.Size(246, 22);
+            this.typeTxtBox.TabIndex = 8;
+            // 
+            // dateRangeLbl
+            // 
+            this.dateRangeLbl.AutoSize = true;
+            this.dateRangeLbl.Location = new System.Drawing.Point(7, 92);
+            this.dateRangeLbl.Name = "dateRangeLbl";
+            this.dateRangeLbl.Size = new System.Drawing.Size(88, 17);
+            this.dateRangeLbl.TabIndex = 9;
+            this.dateRangeLbl.Text = "Date Range:";
+            // 
+            // grpStartMnForm
+            // 
+            this.grpStartMnForm.Location = new System.Drawing.Point(97, 87);
+            this.grpStartMnForm.Name = "grpStartMnForm";
+            this.grpStartMnForm.Size = new System.Drawing.Size(246, 22);
+            this.grpStartMnForm.TabIndex = 10;
+            // 
+            // toLbl
+            // 
+            this.toLbl.AutoSize = true;
+            this.toLbl.Location = new System.Drawing.Point(71, 118);
+            this.toLbl.Name = "toLbl";
+            this.toLbl.Size = new System.Drawing.Size(20, 17);
+            this.toLbl.TabIndex = 11;
+            this.toLbl.Text = "to";
+            // 
+            // grpEndMnForm
+            // 
+            this.grpEndMnForm.Location = new System.Drawing.Point(97, 115);
+            this.grpEndMnForm.Name = "grpEndMnForm";
+            this.grpEndMnForm.Size = new System.Drawing.Size(246, 22);
+            this.grpEndMnForm.TabIndex = 12;
+            // 
+            // progressTCsGroupLbl
+            // 
+            this.progressTCsGroupLbl.AutoSize = true;
+            this.progressTCsGroupLbl.Location = new System.Drawing.Point(362, 62);
+            this.progressTCsGroupLbl.Name = "progressTCsGroupLbl";
+            this.progressTCsGroupLbl.Size = new System.Drawing.Size(167, 17);
+            this.progressTCsGroupLbl.TabIndex = 13;
+            this.progressTCsGroupLbl.Text = "TC\'s Executed for Group:";
+            // 
+            // progressTCsGroupNumLbl
+            // 
+            this.progressTCsGroupNumLbl.AutoSize = true;
+            this.progressTCsGroupNumLbl.Location = new System.Drawing.Point(535, 62);
+            this.progressTCsGroupNumLbl.Name = "progressTCsGroupNumLbl";
+            this.progressTCsGroupNumLbl.Size = new System.Drawing.Size(16, 17);
+            this.progressTCsGroupNumLbl.TabIndex = 14;
+            this.progressTCsGroupNumLbl.Text = "0";
+            // 
+            // groupPassRateLbl
+            // 
+            this.groupPassRateLbl.AutoSize = true;
+            this.groupPassRateLbl.Location = new System.Drawing.Point(408, 88);
+            this.groupPassRateLbl.Name = "groupPassRateLbl";
+            this.groupPassRateLbl.Size = new System.Drawing.Size(121, 17);
+            this.groupPassRateLbl.TabIndex = 15;
+            this.groupPassRateLbl.Text = "Group Pass Rate:";
+            // 
+            // groupPassRateNumLbl
+            // 
+            this.groupPassRateNumLbl.AutoSize = true;
+            this.groupPassRateNumLbl.Location = new System.Drawing.Point(535, 88);
+            this.groupPassRateNumLbl.Name = "groupPassRateNumLbl";
+            this.groupPassRateNumLbl.Size = new System.Drawing.Size(16, 17);
+            this.groupPassRateNumLbl.TabIndex = 16;
+            this.groupPassRateNumLbl.Text = "0";
+            // 
+            // groupFailRateLbl
+            // 
+            this.groupFailRateLbl.AutoSize = true;
+            this.groupFailRateLbl.Location = new System.Drawing.Point(417, 115);
+            this.groupFailRateLbl.Name = "groupFailRateLbl";
+            this.groupFailRateLbl.Size = new System.Drawing.Size(112, 17);
+            this.groupFailRateLbl.TabIndex = 17;
+            this.groupFailRateLbl.Text = "Group Fail Rate:";
+            // 
+            // groupFailRateNumLbl
+            // 
+            this.groupFailRateNumLbl.AutoSize = true;
+            this.groupFailRateNumLbl.Location = new System.Drawing.Point(535, 115);
+            this.groupFailRateNumLbl.Name = "groupFailRateNumLbl";
+            this.groupFailRateNumLbl.Size = new System.Drawing.Size(16, 17);
+            this.groupFailRateNumLbl.TabIndex = 18;
+            this.groupFailRateNumLbl.Text = "0";
+            // 
+            // testGroupPanel
+            // 
+            this.testGroupPanel.Controls.Add(this.button2);
+            this.testGroupPanel.Controls.Add(this.button1);
+            this.testGroupPanel.Controls.Add(this.groupPieChart);
+            this.testGroupPanel.Controls.Add(this.groupFailRateNumLbl);
+            this.testGroupPanel.Controls.Add(this.projectTxtBox);
+            this.testGroupPanel.Controls.Add(this.groupLbl);
+            this.testGroupPanel.Controls.Add(this.groupFailRateLbl);
+            this.testGroupPanel.Controls.Add(this.totalTCsGroupNumLbl);
+            this.testGroupPanel.Controls.Add(this.groupTxtBox);
+            this.testGroupPanel.Controls.Add(this.groupPassRateNumLbl);
+            this.testGroupPanel.Controls.Add(this.totalTCsGroupLbl);
+            this.testGroupPanel.Controls.Add(this.projectLbl);
+            this.testGroupPanel.Controls.Add(this.groupPassRateLbl);
+            this.testGroupPanel.Controls.Add(this.typeLbl);
+            this.testGroupPanel.Controls.Add(this.typeTxtBox);
+            this.testGroupPanel.Controls.Add(this.progressTCsGroupNumLbl);
+            this.testGroupPanel.Controls.Add(this.dateRangeLbl);
+            this.testGroupPanel.Controls.Add(this.grpStartMnForm);
+            this.testGroupPanel.Controls.Add(this.progressTCsGroupLbl);
+            this.testGroupPanel.Controls.Add(this.toLbl);
+            this.testGroupPanel.Controls.Add(this.grpEndMnForm);
+            this.testGroupPanel.Location = new System.Drawing.Point(311, 6);
+            this.testGroupPanel.Name = "testGroupPanel";
+            this.testGroupPanel.Size = new System.Drawing.Size(581, 356);
+            this.testGroupPanel.TabIndex = 1;
+            this.testGroupPanel.Visible = false;
+            // 
+            // groupPieChart
+            // 
+            chartArea5.Name = "ChartArea1";
+            this.groupPieChart.ChartAreas.Add(chartArea5);
+            legend5.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend5.Name = "Legend1";
+            this.groupPieChart.Legends.Add(legend5);
+            this.groupPieChart.Location = new System.Drawing.Point(42, 143);
+            this.groupPieChart.Name = "groupPieChart";
+            this.groupPieChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
+            this.groupPieChart.PaletteCustomColors = new System.Drawing.Color[] {
+        System.Drawing.Color.Blue,
+        System.Drawing.Color.Red,
+        System.Drawing.Color.Purple};
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series5.Label = "#VAL{N0}%";
+            series5.LabelForeColor = System.Drawing.Color.White;
+            series5.Legend = "Legend1";
+            series5.Name = "IdvGroupStatus";
+            series5.YAxisType = System.Windows.Forms.DataVisualization.Charting.AxisType.Secondary;
+            this.groupPieChart.Series.Add(series5);
+            this.groupPieChart.Size = new System.Drawing.Size(301, 210);
+            this.groupPieChart.TabIndex = 19;
+            this.groupPieChart.Text = "chart1";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(485, 186);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 28);
+            this.button1.TabIndex = 20;
+            this.button1.Text = "Remove";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(485, 152);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 28);
+            this.button2.TabIndex = 21;
+            this.button2.Text = "Email";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // mainProgressBar
+            // 
+            this.mainProgressBar.Location = new System.Drawing.Point(3, 415);
+            this.mainProgressBar.Name = "mainProgressBar";
+            this.mainProgressBar.Size = new System.Drawing.Size(1179, 10);
+            this.mainProgressBar.TabIndex = 12;
+            this.mainProgressBar.Visible = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1162, 425);
+            this.ClientSize = new System.Drawing.Size(1186, 429);
+            this.Controls.Add(this.mainProgressBar);
             this.Controls.Add(this.emailBtn);
             this.Controls.Add(this.mainPieChart);
             this.Controls.Add(this.tabControl1);
@@ -359,6 +625,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.testCaseGrid)).EndInit();
             this.adminTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.mainPieChart)).EndInit();
+            this.testGroupPanel.ResumeLayout(false);
+            this.testGroupPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupPieChart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -393,6 +662,29 @@
         private System.Windows.Forms.ListBox testGroupList;
         private System.Windows.Forms.DataVisualization.Charting.Chart mainPieChart;
         private System.Windows.Forms.Button emailBtn;
+        private System.Windows.Forms.Label totalTCsGroupNumLbl;
+        private System.Windows.Forms.Label totalTCsGroupLbl;
+        private System.Windows.Forms.TextBox typeTxtBox;
+        private System.Windows.Forms.Label typeLbl;
+        private System.Windows.Forms.TextBox projectTxtBox;
+        private System.Windows.Forms.Label projectLbl;
+        private System.Windows.Forms.TextBox groupTxtBox;
+        private System.Windows.Forms.Label groupLbl;
+        private System.Windows.Forms.Label progressTCsGroupNumLbl;
+        private System.Windows.Forms.Label progressTCsGroupLbl;
+        private System.Windows.Forms.DateTimePicker grpEndMnForm;
+        private System.Windows.Forms.Label toLbl;
+        private System.Windows.Forms.DateTimePicker grpStartMnForm;
+        private System.Windows.Forms.Label dateRangeLbl;
+        private System.Windows.Forms.Label groupFailRateNumLbl;
+        private System.Windows.Forms.Label groupFailRateLbl;
+        private System.Windows.Forms.Label groupPassRateNumLbl;
+        private System.Windows.Forms.Label groupPassRateLbl;
+        private System.Windows.Forms.Panel testGroupPanel;
+        private System.Windows.Forms.DataVisualization.Charting.Chart groupPieChart;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ProgressBar mainProgressBar;
     }
 }
 

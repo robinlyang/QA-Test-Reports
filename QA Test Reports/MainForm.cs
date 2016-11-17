@@ -74,6 +74,10 @@ namespace QA_Test_Reports
                 "\\TMS\\4-Quality Assurance\\Performance\\Performance Year End\\SIT - Test Execution";
             result = fbd.ShowDialog();
 
+            //Start Progress Bar
+            mainProgressBar.Value = 0;
+            mainProgressBar.Visible = true;
+
             //Populate...
             if (!string.IsNullOrWhiteSpace(fbd.SelectedPath))
             {
@@ -91,6 +95,10 @@ namespace QA_Test_Reports
                 int fbdCount = fbd.SelectedPath.Length;
                 for (int i = 0; i < strFiles.Length; i++)
                 {
+                    //Increment Progress Bar
+                    double mainProgressBarValue = (Convert.ToDouble(i) / Convert.ToDouble(strFiles.Length)) * 100;
+                    mainProgressBar.Value = Convert.ToInt32(mainProgressBarValue);
+
                     //Tase Case tab ListBox
                     string fileString = strFiles[i].ToString();
                     string displayFile = fileString.Substring(fbdCount + 1, strFiles[i].ToString().Length - fbdCount - 1);
@@ -218,6 +226,9 @@ namespace QA_Test_Reports
             populateMainDashBoard();
             //Load Main Pie Chart
             loadMainPieChart();
+
+            //End Progress Bar
+            mainProgressBar.Visible = false;
         }
 
         public void populateMainDashBoard()
@@ -230,7 +241,7 @@ namespace QA_Test_Reports
             for (int x = 0; x < testGroupExecutionList.Count; x++)
             {
                 testCaseCount = testCaseCount + testGroupExecutionList[x].grpNumTests;
-                progressCount = (1 - testGroupExecutionList[x].grpOtherPercent / 100) * testCaseCount;
+                //progressCount = (1 - testGroupExecutionList[x].grpOtherPercent / 100) * testCaseCount;
                 TOTALpassRate = (TOTALpassRate + testGroupExecutionList[x].grpPassPercent);
                 TOTALfailRate = (TOTALfailRate + testGroupExecutionList[x].grpFailPercent);
                 TOTALotherRate = (TOTALotherRate + testGroupExecutionList[x].grpOtherPercent);
@@ -239,7 +250,8 @@ namespace QA_Test_Reports
                 //TOTALprogressCount = TOTALtestCaseCount - (TOTALtestCaseCount * (TOTALotherRate / 100));
             }
             TOTALtestCaseCount = testCaseCount;
-            TOTALprogressCount = progressCount;
+            //TOTALprogressCount = progressCount;
+            TOTALprogressCount = (1 - (TOTALotherRate / testGroupExecutionList.Count) / 100) * TOTALtestCaseCount;
             TOTALpassRatePercentage = TOTALpassRate / testGroupExecutionList.Count;
             TOTALfailRatePercentage = TOTALfailRate / testGroupExecutionList.Count;
             //TOTALotherRatePercentage = TOTALpassRatePercentage + TOTALfailRatePercentage;
@@ -252,6 +264,9 @@ namespace QA_Test_Reports
 
             //Make Email button visible
             emailBtn.Visible = true;
+
+            //Make Group panel visible
+            testGroupPanel.Visible = true;
         }
 
         public void loadMainPieChart()
@@ -280,7 +295,7 @@ namespace QA_Test_Reports
 
         private void resetBtn_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("Not Implemented");
         }
 
         private void emailBtn_Click(object sender, EventArgs e)
@@ -288,15 +303,38 @@ namespace QA_Test_Reports
             string tableContent = "";
             for(int x = 0; x < testGroupExecutionList.Count; x++)
             {
+                string statusString = "";
+                if(testGroupExecutionList[x].grpStatus=="Failed")
+                {
+                    statusString =
+                        "<tr>" +
+                            "<td>Status</td>" + "<td style=\"color:red; \">" + testGroupExecutionList[x].grpStatus + "</td>" +
+                        "</tr>";
+                }
+                else if (testGroupExecutionList[x].grpStatus=="Passed")
+                {
+                    statusString =
+                        "<tr>" +
+                            "<td>Status</td>" + "<td style=\"color:blue; \">" + testGroupExecutionList[x].grpStatus + "</td>" +
+                        "</tr>";
+                }
                 tableContent +=
                     "<tr>" +
-                        "<td colspan=\"2\">" + testGroupExecutionList[x].grpName + "</td>" +
+                        "<td colspan=\"2\" style=\"font-weight: bold; \">" + testGroupExecutionList[x].grpProject +
+                            " - " + testGroupExecutionList[x].grpName + "</td>" +
                     "</tr>" +
+                    "<tr>" +
+                        "<td colspan=\"2\">" + testGroupExecutionList[x].grpTestType + "</td>" +
+                    "</tr>" +
+                    "<tr>" +
+                        "<td colspan=\"2\" style=\"font-size:10.5px; \">" + "Schedule: " +
+                            testGroupExecutionList[x].grpStart.ToShortDateString() + 
+                            " - " + testGroupExecutionList[x].grpEnd.ToShortDateString() + "</td>" +
+                    "</tr>" +
+                    //Red Font if Status=Failed and Blue Font if Status=Passed
+                    statusString +
                     "<tr>" +
                         "<td>Total</td>" + "<td>" + testGroupExecutionList[x].grpTestCases.Count.ToString() + "</td>" +
-                    "</tr>" +
-                    "<tr>" +
-                        "<td>Status</td>" + "<td>" + testGroupExecutionList[x].grpStatus + "</td>" +
                     "</tr>" +
                     "<tr>" +
                         "<td>Passed</td>" + "<td>" + testGroupExecutionList[x].grpPassPercent.ToString("0") + "%</td>" +
@@ -316,11 +354,11 @@ namespace QA_Test_Reports
             mail.HTMLBody =
                 "<html>" +
                     "<head>" +
-                        "<style>" +
-                            "body color: navy;" +
-                        "</style>" +
+
                     "</head>" +
-                    "<body>" +
+                    "<body style=\"font-family:'titillium'; \">" +
+                        "<br>" +
+                        "<br>" +
                         "<table width=\"100%\">" +
                             "<tr>" +
                                 "<table border=\"1\" align=\"center\">" +
@@ -347,6 +385,76 @@ namespace QA_Test_Reports
             //{
             //    File.Delete(MainPieImagesDirectory);
             //}
+        }
+
+        private void testGroupList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string groupSelected = testGroupList.GetItemText(testGroupList.SelectedItem);
+            string projectSelected = "";
+            string testTypeSelected = "";
+            //start date
+            //end date
+            int totalTCSelected = 0;
+            double progressTCSelected = 0.0;
+            double passRateSelected = 0.0;
+            double failRateSelected = 0.0;
+            for(int x = 0; x < testGroupExecutionList.Count; x++)
+            {
+                if(testGroupExecutionList[x].grpName==groupSelected)
+                {
+                    projectSelected = testGroupExecutionList[x].grpProject;
+                    testTypeSelected = testGroupExecutionList[x].grpTestType;
+                    totalTCSelected = testGroupExecutionList[x].grpNumTests;
+                    progressTCSelected = (1 - testGroupExecutionList[x].grpOtherPercent / 100) * totalTCSelected;
+                    passRateSelected = testGroupExecutionList[x].grpPassPercent;
+                    failRateSelected = testGroupExecutionList[x].grpFailPercent;
+                }
+            }
+            projectTxtBox.Text = projectSelected;
+            groupTxtBox.Text = groupSelected;
+            typeTxtBox.Text = testTypeSelected;
+            //start date
+            //end date
+            totalTCsGroupNumLbl.Text = totalTCSelected.ToString("0");
+            progressTCsGroupNumLbl.Text = progressTCSelected.ToString("0");
+            groupPassRateNumLbl.Text = passRateSelected.ToString("0") + "%";
+            groupFailRateNumLbl.Text = failRateSelected.ToString("0") + "%";
+
+            //GroupBarChart
+            foreach (var series in groupPieChart.Series)
+            {
+                series.Points.Clear();
+            }
+
+            this.groupPieChart.Series["IdvGroupStatus"].Points.AddXY("Pass", passRateSelected);
+            this.groupPieChart.Series["IdvGroupStatus"].Points.AddXY("Fail", failRateSelected);
+            this.groupPieChart.Series["IdvGroupStatus"].Points.AddXY("Other", 100 - passRateSelected -
+                failRateSelected);
+            this.groupPieChart.Series["IdvGroupStatus"].Points[0].LegendText = "Pass";
+            this.groupPieChart.Series["IdvGroupStatus"].Points[1].LegendText = "Fail";
+            this.groupPieChart.Series["IdvGroupStatus"].Points[2].LegendText = "Other";
+            //MainPieImagesDirectory = AppDomain.CurrentDomain.BaseDirectory + "MainPieChart.png";
+            //this.mainPieChart.SaveImage(MainPieImagesDirectory, System.Windows.Forms.DataVisualization.Charting.ChartImageFormat.Png);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Not Implemented");
+            //string groupSelected = testGroupList.GetItemText(testGroupList.SelectedItem);
+            //for (int x = 0; x < testGroupExecutionList.Count; x++)
+            //{
+            //    if (testGroupExecutionList[x].grpName == groupSelected)
+            //    {
+            //        testGroupExecutionList.RemoveAt(x);
+            //    }
+            //}
+            //testGroupList.SelectedItems.Remove(testGroupList.SelectedItem);
+            //testGroupList.Refresh();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Not Implemented");
         }
     }
 }
