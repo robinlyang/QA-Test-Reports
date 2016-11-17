@@ -45,6 +45,12 @@ namespace QA_Test_Reports
 
         private void selectTestCaseFolderBtn_Click(object sender, EventArgs e)
         {
+            if(this.frmGroup == "")
+            {
+                groupAsterisk.Visible = true;
+                MessageBox.Show("Group can not be empty.");
+                return;
+            }
             MainForm.grpProject = this.frmProject;
             MainForm.grpGroup = this.frmGroup;
             MainForm.grpTestType = this.frmTestType;

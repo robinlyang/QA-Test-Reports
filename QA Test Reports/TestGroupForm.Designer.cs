@@ -39,6 +39,7 @@
             this.groupTxtBox = new System.Windows.Forms.TextBox();
             this.projectTxtBox = new System.Windows.Forms.ComboBox();
             this.testTypeTxtBox = new System.Windows.Forms.ComboBox();
+            this.groupAsterisk = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // projectLbl
@@ -141,12 +142,25 @@
             this.testTypeTxtBox.Size = new System.Drawing.Size(247, 24);
             this.testTypeTxtBox.TabIndex = 3;
             // 
+            // groupAsterisk
+            // 
+            this.groupAsterisk.AutoSize = true;
+            this.groupAsterisk.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupAsterisk.ForeColor = System.Drawing.Color.Red;
+            this.groupAsterisk.Location = new System.Drawing.Point(27, 44);
+            this.groupAsterisk.Name = "groupAsterisk";
+            this.groupAsterisk.Size = new System.Drawing.Size(14, 18);
+            this.groupAsterisk.TabIndex = 7;
+            this.groupAsterisk.Text = "*";
+            this.groupAsterisk.Visible = false;
+            // 
             // TestGroupForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(367, 194);
+            this.Controls.Add(this.groupAsterisk);
             this.Controls.Add(this.testTypeTxtBox);
             this.Controls.Add(this.projectTxtBox);
             this.Controls.Add(this.groupTxtBox);
@@ -178,5 +192,6 @@
         private System.Windows.Forms.TextBox groupTxtBox;
         private System.Windows.Forms.ComboBox projectTxtBox;
         private System.Windows.Forms.ComboBox testTypeTxtBox;
+        private System.Windows.Forms.Label groupAsterisk;
     }
 }
