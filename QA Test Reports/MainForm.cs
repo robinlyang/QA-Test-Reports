@@ -419,9 +419,10 @@ namespace QA_Test_Reports
             //end date
             totalTCsGroupNumLbl.Text = totalTCSelected.ToString("0");
             progressTCsGroupNumLbl.Text = progressTCSelected.ToString("0");
-            groupPassRateNumLbl.Text = passRateSelected.ToString("0") + "%";
-            groupFailRateNumLbl.Text = failRateSelected.ToString("0") + "%";
-
+            groupPassRateNumLbl.Text = (totalTCSelected * (passRateSelected / 100)).ToString("0") +
+                " (" + passRateSelected.ToString("0") + "%)";
+            groupFailRateNumLbl.Text = (totalTCSelected * (failRateSelected / 100)).ToString("0") +
+                " (" + failRateSelected.ToString("0") + "%)";
             //GroupBarChart
             foreach (var series in groupPieChart.Series)
             {
