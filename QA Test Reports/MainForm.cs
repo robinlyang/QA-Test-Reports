@@ -176,8 +176,9 @@ namespace QA_Test_Reports
                             passRate = passRate + 1;
                         }
                         //Push to DataGridView
-                        testCaseGrid.Rows.Add(tcStatus, passPercentage.ToString("0.00"), failPercentage.ToString("0.00"),
-                            otherPercentage.ToString("0.00"), tcNumber, tcName, stepCount);
+                        testCaseGrid.Rows.Add(tcNumber, tcName, tcStatus, passPercentage.ToString("0.00"), failPercentage.ToString("0.00"),
+                            otherPercentage.ToString("0.00"), stepCount, singleGrpProject, singleGrpGroup,
+                            singleGrpTestType);
                         workBook.Save();
                         workBook.Close();
 
