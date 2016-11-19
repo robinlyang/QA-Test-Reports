@@ -303,6 +303,10 @@ namespace QA_Test_Reports
 
         private void emailBtn_Click(object sender, EventArgs e)
         {
+            if(mainPassChkBox.Checked)
+            {
+                MessageBox.Show("Pass Checked");
+            }
             string tableContent = "";
             for(int x = 0; x < testGroupExecutionList.Count; x++)
             {
